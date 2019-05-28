@@ -52,6 +52,6 @@ if blacklisted:
 		else:
 			print('{} Delisted.'.format(ip))
 
-browser.close()
+	browser.close()
 
 print('Finished!')
