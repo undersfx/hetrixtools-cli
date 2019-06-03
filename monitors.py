@@ -22,5 +22,5 @@ def get_data():
         except KeyError:
             break
 
-    print('Monitor Finished!')
+    print(f'Gathered data from {len(monitors)} IPs!')
     return monitors
