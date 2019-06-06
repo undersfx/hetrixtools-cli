@@ -29,20 +29,26 @@ def main():
     args = parser.parse_args()
 
     def load_cache():
+        '''Load the cache file from disk'''
+
         with open('cached_data.json', 'r') as f:
             ips = json.load(f)
             print('Cached data found, using the file.')
             return ips
 
     def update_cache(ips):
+        '''Write a new cache file in disk'''
+
         with open('cached_data.json', 'w') as f:
             json.dump(ips, f)
             print('New cache saved')
 
     if args.u:
+        # Force cache file to be updated
         ips = monitors.get_data()
         update_cache(ips)
     else:
+        # Try to load a existing cache file
         try:
             ips = load_cache()
         except FileNotFoundError:
@@ -54,10 +60,9 @@ def main():
         bl_count = blacklist.count(ips)
         pprint(sorted(bl_count.items(), key=lambda x: x[1], reverse=True))
 
+    # Identify and run dnsbl.org script of delist
     if args.dnsrbl:
-        # Identifica quais IPs estão listados em 'dnsrbl.org'
         blacklisted = blacklist.find_blocked(ips, 'dnsrbl.org')
-        # Chama Selenium para Delistar IPs
         if blacklisted: delist.dnsrbl(blacklisted)
 
     print('Finished!')
