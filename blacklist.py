@@ -11,5 +11,12 @@ def find_blocked(ips, name):
 	print(f'{len(blacklisted)} IPs listed found in {name}')
 	return blacklisted
 
-def count():
-	pass
+def count(ips):
+	rbl_count = {}
+
+	for ip in ips:
+		if ip['Blacklisted_Count'] != '0':
+			for rbl in ip['Blacklisted_On']:
+				rbl_count[rbl['RBL']] = rbl_count.get(rbl['RBL'], 0) + 1	
+
+	return rbl_count

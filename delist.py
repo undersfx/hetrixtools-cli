@@ -1,7 +1,7 @@
-def dnsrbl(blacklisted):
+def dnsrbl(ips):
 	browser = webdriver.Chrome()
 	
-	for ip in blacklisted:
+	for ip in ips:
 		# browser.get('https://dnsrbl.org/remove.cgi?ip=177.70.232.115')
 		browser.get('https://dnsrbl.org/lookup.cgi?ip={}'.format(ip))
 		print('Delisting: {}'.format(ip))
