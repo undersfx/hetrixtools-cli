@@ -20,7 +20,7 @@ parser.add_argument('-c', action='store_true',
                     help='count blacklisted ips')
 
 parser.add_argument('-l', action='store_true',
-                    help='list all ips blacklisted and its blacklist') # TODO
+                    help='list all ips blacklisted and its blacklist')
 
 parser.add_argument('--dnsrbl', action='store_true',
                     help='run the delist process for dnsrbl.org')
@@ -58,7 +58,15 @@ def main():
     # Print the blacklist count
     if args.c:
         bl_count = blacklist.count(ips)
-        pprint(sorted(bl_count.items(), key=lambda x: x[1], reverse=True))
+        bl_count = sorted(bl_count.items(), key=lambda x: x[1], reverse=True)
+        for bl in bl_count:
+            print(f'{bl[0]}: {bl[1]}')
+
+    # List all ips blacklisted
+    if args.l:
+        todos = blacklist.list_all(ips)
+        for i in todos.items():
+            print(f'{i[0]}: {i[1]}')
 
     # Identify and run dnsbl.org script of delist
     if args.dnsrbl:
