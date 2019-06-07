@@ -1,3 +1,5 @@
+from selenium import webdriver
+
 def dnsrbl(ips):
 	browser = webdriver.Chrome()
 	

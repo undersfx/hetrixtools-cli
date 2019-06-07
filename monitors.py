@@ -22,6 +22,6 @@ def get_data():
         except KeyError:
             break
 
-    print(f'Gathered data from {len(monitors)} IPs!')
+    print('Gathered data from {} IPs!'.format(len(monitors)))
 
     return monitors

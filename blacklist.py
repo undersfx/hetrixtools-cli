@@ -8,7 +8,7 @@ def find_blocked(ips, name):
 					blacklisted.append(ip['Target'])
 					print('Listed IP found: {}'.format(ip['Target']))
 
-	print(f'{len(blacklisted)} IPs listed found in {name}')
+	print('{} IPs listed found in {}'.format(len(blacklisted), name))
 	return blacklisted
 
 def count(ips):
