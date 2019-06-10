@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# By @undersfx
+
+'''
+Command line interface with tools to parse and analyze data from Hetrixtools API.
+'''
 
 from argparse import ArgumentParser
 from pprint import pprint
@@ -7,7 +12,7 @@ import monitors
 import delist
 import json
 
-# Parser config
+# CLI Parser config
 parser = ArgumentParser(
     prog='rbl',
     description='Tools to maintain my sanity',)
@@ -36,7 +41,11 @@ def main():
             return ips
 
     def update_cache(ips):
-        '''Write a new cache file in disk'''
+        '''Write a new cache file in disk
+
+        :type ips: dict
+        :param ips: result of monitor api request (monitor.get_data)
+        '''
 
         with open('cached_data.json', 'w') as f:
             json.dump(ips, f)

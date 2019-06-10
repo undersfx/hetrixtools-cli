@@ -1,6 +1,12 @@
 from selenium import webdriver
 
 def dnsrbl(ips):
+	'''Run the delist process for the blacklist dnsrbl.org for the given IPs
+
+	:type ips: dict
+	:param ips: result of monitor api request (monitor.get_data)
+	'''
+
 	browser = webdriver.Chrome()
 	
 	for ip in ips:
