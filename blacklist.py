@@ -1,3 +1,7 @@
+'''
+Module that interact with blacklist results of monitors data
+'''
+
 def find_blocked(ips, blacklist):
 	'''Search the IPs data for blacklisted in given blacklist
 

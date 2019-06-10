@@ -1,3 +1,7 @@
+'''
+Module that interact with the blacklist monitors API of hentrixtools
+'''
+
 import requests
 
 def get_data():

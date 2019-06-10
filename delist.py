@@ -1,3 +1,7 @@
+'''
+Module that interact with blacklists process of delisting
+'''
+
 from selenium import webdriver
 
 def dnsrbl(ips):
