@@ -7,14 +7,14 @@ from selenium import webdriver
 def dnsrbl(ips):
 	'''Run the delist process for the blacklist dnsrbl.org for the given IPs
 
-	:type ips: dict
+	:type ips: list
 	:param ips: result of monitor api request (monitor.get_data)
 	'''
 
 	browser = webdriver.Chrome()
 	
 	for ip in ips:
-		# browser.get('https://dnsrbl.org/remove.cgi?ip=177.70.232.115')
+		# browser.get('https://dnsrbl.org/remove.cgi?ip={}'.format(ip))
 		browser.get('https://dnsrbl.org/lookup.cgi?ip={}'.format(ip))
 		print('Delisting: {}'.format(ip))
 		

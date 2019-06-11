@@ -43,7 +43,7 @@ def main():
     def update_cache(ips):
         '''Write a new cache file in disk
 
-        :type ips: dict
+        :type ips: list
         :param ips: result of monitor api request (monitor.get_data)
         '''
 

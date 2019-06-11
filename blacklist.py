@@ -5,7 +5,7 @@ Module that interact with blacklist results of monitors data
 def find_blocked(ips, blacklist):
 	'''Search the IPs data for blacklisted in given blacklist
 
-	:type ips: dict
+	:type ips: list
 	:type blacklist: string
 	:param ips: result of monitor api request (monitor.get_data)
 	:param blacklist: dns lookup address of the blacklist
@@ -25,7 +25,7 @@ def find_blocked(ips, blacklist):
 def count(ips):
 	'''Count the total of IPs listed in each blacklist
 
-	:type ips: dict
+	:type ips: list
 	:param ips: result of monitor api request (monitor.get_data)
 	'''
 	rbl_count = {}
@@ -40,7 +40,7 @@ def count(ips):
 def list_all(ips):
 	'''List all IPs listed and their related blacklists
 
-	:type ips: dict
+	:type ips: list
 	:param ips: result of monitor api request (monitor.get_data)
 	'''
 
