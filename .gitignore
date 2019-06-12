@@ -1,2 +1,3 @@
 .vscode/
+.env
 cached_data.json

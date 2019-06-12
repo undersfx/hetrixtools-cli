@@ -3,6 +3,7 @@ Module that interact with blacklists process of delisting
 '''
 
 from selenium import webdriver
+import os
 
 def dnsrbl(ips):
 	'''Run the delist process for the blacklist dnsrbl.org for the given IPs
@@ -14,8 +15,7 @@ def dnsrbl(ips):
 	browser = webdriver.Chrome()
 	
 	for ip in ips:
-		# browser.get('https://dnsrbl.org/remove.cgi?ip={}'.format(ip))
-		browser.get('https://dnsrbl.org/lookup.cgi?ip={}'.format(ip))
+		browser.get('{}{}'.format(os.environ['DNSRBLORG_LOOKUP_URL'], ip))
 		print('Delisting: {}'.format(ip))
 		
 		try:

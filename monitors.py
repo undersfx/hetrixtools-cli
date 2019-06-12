@@ -4,8 +4,12 @@ Module that interact with the blacklist monitors API of hentrixtools
 
 import requests
 
-def get_data():
-    '''Retrieve all data from blacklist monitors'''
+def get_data(url):
+    '''Retrieve all data from blacklist monitors
+    
+    :type url: string
+    :param url: Start url from hetrixtools blacklist monitors API
+    '''
 
     monitors = []
 
@@ -20,7 +24,6 @@ def get_data():
         json_data = r.json()
         return json_data
 
-    url = 'https://api.hetrixtools.com/v2/a8b6c925e6d01613deaf5f5c48581f8f/blacklist/monitors/0/1024/'
     json_data = get_page(url)
 
     while True:

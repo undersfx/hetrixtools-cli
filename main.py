@@ -11,6 +11,10 @@ import blacklist
 import monitors
 import delist
 import json
+import os
+
+# Enviroment Variables Setup
+MONITORS_START_URL = os.environ['MONITORS_START_URL']
 
 # CLI Parser config
 parser = ArgumentParser(
@@ -53,14 +57,14 @@ def main():
 
     if args.u:
         # Force cache file to be updated
-        ips = monitors.get_data()
+        ips = monitors.get_data(MONITORS_START_URL)
         update_cache(ips)
     else:
         # Try to load a existing cache file
         try:
             ips = load_cache()
         except FileNotFoundError:
-            ips = monitors.get_data()
+            ips = monitors.get_data(MONITORS_START_URL)
             update_cache(ips)
 
     # Print the blacklist count
@@ -76,7 +80,7 @@ def main():
         for i in todos.items():
             print('{}: {}'.format(i[0], i[1]))
 
-    # Identify and run dnsbl.org script of delist
+    # Identify and run dnsrbl.org script of delist
     if args.dnsrbl:
         blacklisted = blacklist.find_blocked(ips, 'dnsrbl.org')
         if blacklisted: delist.dnsrbl(blacklisted)
