@@ -12,7 +12,8 @@ Setup of Variables needed to run the project:
 
 API endpoint to start fetching the blacklist monitors data.
 
-Example: `MONITORS_START_URL = 'https://api.hetrixtools.com/v2/<API_TOKEN>/blacklist/monitors/<PAGE>/<PER_PAGE>/'`
+Example: 
+`MONITORS_START_URL = 'https://api.hetrixtools.com/v2/<API_TOKEN>/blacklist/monitors/<PAGE>/<PER_PAGE>/'`
 
 PAGE = 0
 
@@ -24,7 +25,8 @@ More info: https://hetrixtools.com/dashboard/api-explorer/
 
 Lookup URL for dnsrbl.org
 
-Example: `DNSRBLORG_LOOKUP_URL = 'https://dnsrbl.org/lookup.cgi?ip='`
+Example: 
+`DNSRBLORG_LOOKUP_URL = 'https://dnsrbl.org/lookup.cgi?ip='`
 
 ## Deslist Bots
 
