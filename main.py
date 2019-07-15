@@ -72,13 +72,13 @@ def main():
         bl_count = blacklist.count(ips)
         bl_count = sorted(bl_count.items(), key=lambda x: x[1], reverse=True)
         for bl in bl_count:
-            print('{}: {}'.format(bl[0], bl[1]))
+            print('{:5} {}'.format(bl[1], bl[0]))
 
     # List all ips blacklisted
     if args.l:
         todos = blacklist.list_all(ips)
         for i in todos.items():
-            print('{}: {}'.format(i[0], i[1]))
+            print('{:5}: {}'.format(i[0], i[1]))
 
     # Identify and run dnsrbl.org script of delist
     if args.dnsrbl:
