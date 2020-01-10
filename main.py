@@ -12,6 +12,7 @@ import monitors
 import delist
 import json
 import os
+import socket
 
 # Enviroment Variables Setup
 MONITORS_START_URL = os.environ['MONITORS_START_URL']
@@ -25,10 +26,13 @@ parser.add_argument('-u', action='store_true',
                     help='update cache file')
 
 parser.add_argument('-c', action='store_true',
-                    help='count blacklisted ips')
+                    help='count blacklisted ips per blacklist')
 
 parser.add_argument('-l', action='store_true',
                     help='list all ips blacklisted and its blacklist')
+
+parser.add_argument('-r', action='store_true',
+                    help='list all ips blacklisted and its lookups')
 
 parser.add_argument('--dnsrbl', action='store_true',
                     help='run the delist process for dnsrbl.org')
@@ -78,7 +82,17 @@ def main():
     if args.l:
         todos = blacklist.list_all(ips)
         for i in todos.items():
-            print('{:5}: {}'.format(i[0], i[1]))
+            print('{:5} {}'.format(i[0], i[1]))
+
+    # List all blacklisted ips reverses
+    if args.r:
+        todos = blacklist.list_all(ips)
+        for i in todos.items():
+            try:
+                reverso = socket.gethostbyaddr(i[0])
+            except socket.error as e:
+                reverso = 'Error: {}'.format(e)
+            print('{:5} {}'.format(i[0], reverso[0]))
 
     # Identify and run dnsrbl.org script of delist
     if args.dnsrbl:
